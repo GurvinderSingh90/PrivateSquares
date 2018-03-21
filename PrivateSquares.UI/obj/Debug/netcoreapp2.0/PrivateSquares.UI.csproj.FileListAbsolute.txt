@@ -1,0 +1,12 @@
+E:\Projects\PrivateSquares\PrivateSquares.UI\bin\Debug\netcoreapp2.0\PrivateSquares.UI.deps.json
+E:\Projects\PrivateSquares\PrivateSquares.UI\bin\Debug\netcoreapp2.0\PrivateSquares.UI.runtimeconfig.json
+E:\Projects\PrivateSquares\PrivateSquares.UI\bin\Debug\netcoreapp2.0\PrivateSquares.UI.runtimeconfig.dev.json
+E:\Projects\PrivateSquares\PrivateSquares.UI\bin\Debug\netcoreapp2.0\PrivateSquares.UI.dll
+E:\Projects\PrivateSquares\PrivateSquares.UI\bin\Debug\netcoreapp2.0\PrivateSquares.UI.pdb
+E:\Projects\PrivateSquares\PrivateSquares.UI\obj\Debug\netcoreapp2.0\PrivateSquares.UI.csprojResolveAssemblyReference.cache
+E:\Projects\PrivateSquares\PrivateSquares.UI\obj\Debug\netcoreapp2.0\PrivateSquares.UI.csproj.CoreCompileInputs.cache
+E:\Projects\PrivateSquares\PrivateSquares.UI\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+E:\Projects\PrivateSquares\PrivateSquares.UI\obj\Debug\netcoreapp2.0\PrivateSquares.UI.AssemblyInfoInputs.cache
+E:\Projects\PrivateSquares\PrivateSquares.UI\obj\Debug\netcoreapp2.0\PrivateSquares.UI.AssemblyInfo.cs
+E:\Projects\PrivateSquares\PrivateSquares.UI\obj\Debug\netcoreapp2.0\PrivateSquares.UI.dll
+E:\Projects\PrivateSquares\PrivateSquares.UI\obj\Debug\netcoreapp2.0\PrivateSquares.UI.pdb

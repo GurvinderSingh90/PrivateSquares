@@ -1,0 +1,12 @@
+E:\Projects\PrivateSquares\PrivateSquares.Data\bin\Debug\netstandard2.0\PrivateSquares.Data.deps.json
+E:\Projects\PrivateSquares\PrivateSquares.Data\bin\Debug\netstandard2.0\PrivateSquares.Data.dll
+E:\Projects\PrivateSquares\PrivateSquares.Data\bin\Debug\netstandard2.0\PrivateSquares.Data.pdb
+E:\Projects\PrivateSquares\PrivateSquares.Data\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+E:\Projects\PrivateSquares\PrivateSquares.Data\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml
+E:\Projects\PrivateSquares\PrivateSquares.Data\obj\Debug\netstandard2.0\PrivateSquares.Data.csprojResolveAssemblyReference.cache
+E:\Projects\PrivateSquares\PrivateSquares.Data\obj\Debug\netstandard2.0\PrivateSquares.Data.csproj.CoreCompileInputs.cache
+E:\Projects\PrivateSquares\PrivateSquares.Data\obj\Debug\netstandard2.0\PrivateSquares.Data.AssemblyInfoInputs.cache
+E:\Projects\PrivateSquares\PrivateSquares.Data\obj\Debug\netstandard2.0\PrivateSquares.Data.AssemblyInfo.cs
+E:\Projects\PrivateSquares\PrivateSquares.Data\obj\Debug\netstandard2.0\PrivateSquares.Data.csproj.CopyComplete
+E:\Projects\PrivateSquares\PrivateSquares.Data\obj\Debug\netstandard2.0\PrivateSquares.Data.dll
+E:\Projects\PrivateSquares\PrivateSquares.Data\obj\Debug\netstandard2.0\PrivateSquares.Data.pdb

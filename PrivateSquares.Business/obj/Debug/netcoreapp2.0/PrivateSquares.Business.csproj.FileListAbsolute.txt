@@ -1,0 +1,14 @@
+E:\Projects\PrivateSquares\PrivateSquares.Business\bin\Debug\netcoreapp2.0\PrivateSquares.Business.deps.json
+E:\Projects\PrivateSquares\PrivateSquares.Business\bin\Debug\netcoreapp2.0\PrivateSquares.Business.dll
+E:\Projects\PrivateSquares\PrivateSquares.Business\bin\Debug\netcoreapp2.0\PrivateSquares.Business.pdb
+E:\Projects\PrivateSquares\PrivateSquares.Business\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Mvc.ViewFeatures.dll
+E:\Projects\PrivateSquares\PrivateSquares.Business\bin\Debug\netcoreapp2.0\PrivateSquares.Data.dll
+E:\Projects\PrivateSquares\PrivateSquares.Business\bin\Debug\netcoreapp2.0\PrivateSquares.Data.pdb
+E:\Projects\PrivateSquares\PrivateSquares.Business\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Mvc.ViewFeatures.xml
+E:\Projects\PrivateSquares\PrivateSquares.Business\obj\Debug\netcoreapp2.0\PrivateSquares.Business.csprojResolveAssemblyReference.cache
+E:\Projects\PrivateSquares\PrivateSquares.Business\obj\Debug\netcoreapp2.0\PrivateSquares.Business.csproj.CoreCompileInputs.cache
+E:\Projects\PrivateSquares\PrivateSquares.Business\obj\Debug\netcoreapp2.0\PrivateSquares.Business.AssemblyInfoInputs.cache
+E:\Projects\PrivateSquares\PrivateSquares.Business\obj\Debug\netcoreapp2.0\PrivateSquares.Business.AssemblyInfo.cs
+E:\Projects\PrivateSquares\PrivateSquares.Business\obj\Debug\netcoreapp2.0\PrivateSquares.Business.csproj.CopyComplete
+E:\Projects\PrivateSquares\PrivateSquares.Business\obj\Debug\netcoreapp2.0\PrivateSquares.Business.dll
+E:\Projects\PrivateSquares\PrivateSquares.Business\obj\Debug\netcoreapp2.0\PrivateSquares.Business.pdb

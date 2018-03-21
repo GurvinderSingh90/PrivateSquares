@@ -1,0 +1,11 @@
+E:\Projects\PrivateSquares\PrivateSquares.Web\bin\Debug\netcoreapp2.0\PrivateSquares.Web.deps.json
+E:\Projects\PrivateSquares\PrivateSquares.Web\bin\Debug\netcoreapp2.0\PrivateSquares.Web.runtimeconfig.json
+E:\Projects\PrivateSquares\PrivateSquares.Web\bin\Debug\netcoreapp2.0\PrivateSquares.Web.runtimeconfig.dev.json
+E:\Projects\PrivateSquares\PrivateSquares.Web\bin\Debug\netcoreapp2.0\PrivateSquares.Web.dll
+E:\Projects\PrivateSquares\PrivateSquares.Web\bin\Debug\netcoreapp2.0\PrivateSquares.Web.pdb
+E:\Projects\PrivateSquares\PrivateSquares.Web\obj\Debug\netcoreapp2.0\PrivateSquares.Web.csprojResolveAssemblyReference.cache
+E:\Projects\PrivateSquares\PrivateSquares.Web\obj\Debug\netcoreapp2.0\PrivateSquares.Web.csproj.CoreCompileInputs.cache
+E:\Projects\PrivateSquares\PrivateSquares.Web\obj\Debug\netcoreapp2.0\PrivateSquares.Web.AssemblyInfoInputs.cache
+E:\Projects\PrivateSquares\PrivateSquares.Web\obj\Debug\netcoreapp2.0\PrivateSquares.Web.AssemblyInfo.cs
+E:\Projects\PrivateSquares\PrivateSquares.Web\obj\Debug\netcoreapp2.0\PrivateSquares.Web.dll
+E:\Projects\PrivateSquares\PrivateSquares.Web\obj\Debug\netcoreapp2.0\PrivateSquares.Web.pdb
