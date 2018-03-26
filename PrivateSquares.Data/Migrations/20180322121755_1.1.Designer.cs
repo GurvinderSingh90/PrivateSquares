@@ -11,8 +11,8 @@ using System;
 namespace PrivateSquares.Data.Migrations
 {
     [DbContext(typeof(PrivateSquaresDbContext))]
-    [Migration("20180320082119_initialMigration")]
-    partial class initialMigration
+    [Migration("20180322121755_1.1")]
+    partial class _11
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,18 @@ namespace PrivateSquares.Data.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("PrivateSquares.Data.EntityModels.Role", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Roles");
+                });
 
             modelBuilder.Entity("PrivateSquares.Data.EntityModels.User", b =>
                 {
@@ -52,12 +64,17 @@ namespace PrivateSquares.Data.Migrations
                     b.Property<DateTime>("ModifyOn");
 
                     b.Property<string>("Password")
-                        .HasMaxLength(30);
+                        .IsRequired()
+                        .HasMaxLength(200);
 
                     b.Property<string>("Photo")
                         .HasMaxLength(200);
 
                     b.Property<int>("RoleID");
+
+                    b.Property<string>("Salt")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
                     b.Property<string>("Title")
                         .HasMaxLength(500);
@@ -70,6 +87,37 @@ namespace PrivateSquares.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("PrivateSquares.Data.EntityModels.UserRole", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("RoleId");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserRoles");
+                });
+
+            modelBuilder.Entity("PrivateSquares.Data.EntityModels.UserRole", b =>
+                {
+                    b.HasOne("PrivateSquares.Data.EntityModels.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("PrivateSquares.Data.EntityModels.User")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

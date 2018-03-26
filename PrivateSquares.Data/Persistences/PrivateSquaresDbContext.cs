@@ -14,6 +14,10 @@ namespace PrivateSquares.Data.Persistences
         public PrivateSquaresDbContext(DbContextOptions<PrivateSquaresDbContext>options):base(options){ }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; } 
+        public DbSet<Verify> Verifies { get; set; }
+
 
         public virtual void Commit()
         {
@@ -24,6 +28,9 @@ namespace PrivateSquares.Data.Persistences
         {
             base.OnModelCreating(modelBuilder);
             new UserConfiguration(modelBuilder.Entity<User>());
+            new UserRoleConfiguration(modelBuilder.Entity<UserRole>());
+            new RoleConfiguration(modelBuilder.Entity<Role>());
+            new VerifyConfiguration(modelBuilder.Entity<Verify>());
         }
     }
 }

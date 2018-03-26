@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrivateSquares.Business", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrivateSquares.Api", "PrivateSquares.Api\PrivateSquares.Api.csproj", "{F9718735-AB84-4D08-859B-3A76CE85C6F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateSquares.Web", "PrivateSquares.Web\PrivateSquares.Web.csproj", "{1F02FF41-3178-479D-A5FC-5CB3443453A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrivateSquares.Web", "PrivateSquares.Web\PrivateSquares.Web.csproj", "{1F02FF41-3178-479D-A5FC-5CB3443453A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateSquares.UI", "PrivateSquares.UI\PrivateSquares.UI.csproj", "{F2F900FD-9478-4DE9-B4D6-9AB76A7BABAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrivateSquares.UI", "PrivateSquares.UI\PrivateSquares.UI.csproj", "{F2F900FD-9478-4DE9-B4D6-9AB76A7BABAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

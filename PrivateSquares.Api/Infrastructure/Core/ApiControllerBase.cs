@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PrivateSquares.Data.EntityModels;
 using PrivateSquares.Data.Persistences;
 using PrivateSquares.Data.Repositories;
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace PrivateSquares.Api.Infrastructure.Core
 {
@@ -18,6 +21,49 @@ namespace PrivateSquares.Api.Infrastructure.Core
         {
             _errorsRepository = errorsRepository;
             _unitOfWork = unitOfWork;
+        }
+        public ApiControllerBase(IDataRepositoryFactory dataRepositoryFactory, IEntityRepository<Error> errorsRepository, IUnitOfWork unitOfWork)
+        {
+            _errorsRepository = errorsRepository;
+            _unitOfWork = unitOfWork;
+        }
+
+        protected HttpResponseMessage CreateHttpResponse(HttpRequestMessage request, Func<HttpResponseMessage> function)
+        {
+            HttpResponseMessage response = null;
+
+            try
+            {
+                response = function.Invoke();
+            }
+            catch (DbUpdateException ex)
+            {
+                LogError(ex);
+                response = request.CreateResponse(HttpStatusCode.BadRequest, ex.InnerException.Message);
+            }
+            catch (Exception ex)
+            {
+                LogError(ex);
+                response = request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+
+            return response;
+        }
+        private void LogError(Exception ex)
+        {
+            try
+            {
+                Error _error = new Error()
+                {
+                    Message = ex.Message,
+                    StackTrace = ex.StackTrace,
+                    DateCreated = DateTime.Now
+                };
+
+                _errorsRepository.Add(_error);
+                _unitOfWork.Commit();
+            }
+            catch { }
         }
     }
 }

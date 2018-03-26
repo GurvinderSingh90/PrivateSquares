@@ -23,8 +23,11 @@ namespace PrivateSquares.Data.Configurations
             builder.Property(x => x.LastName).HasMaxLength(50).IsRequired(false);
             builder.Property(x => x.Email).HasMaxLength(100).IsRequired();
             builder.Property(x => x.Mobile).HasMaxLength(10).IsRequired(false);
-            builder.Property(x => x.Password).HasMaxLength(30).IsRequired(true);
+            builder.Property(x => x.Password).HasMaxLength(200).IsRequired(true);
+            builder.Property(x => x.Salt).HasMaxLength(200).IsRequired(true);
             builder.Property(x => x.Photo).HasMaxLength(200).IsRequired(false);
+            builder.Property(x => x.VerifiedPhone).IsRequired(true);
+            builder.Property(x => x.VerifiedEmail).IsRequired(true);
             builder.Property(x => x.CreatedOn).IsRequired(true);
         }
 

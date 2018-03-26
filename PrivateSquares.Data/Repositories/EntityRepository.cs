@@ -56,7 +56,6 @@ namespace PrivateSquares.Data.Repositories
         {
             EntityEntry dbEntityEntry = context.Entry<T>(entity);
             context.Set<T>().Add(entity);
-            context.SaveChanges();
         }
 
         public void Delete(T entity)

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PrivateSquares.Web.Services;
 
 namespace PrivateSquares.Web
 {
@@ -23,6 +24,8 @@ namespace PrivateSquares.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var appSettings = Configuration.GetSection("AppSettings");
+            services.Configure<clsCommon>(appSettings);
             services.AddMvc();
         }
 
@@ -47,6 +50,7 @@ namespace PrivateSquares.Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
     }
 }

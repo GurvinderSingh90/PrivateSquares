@@ -1,39 +1,98 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using PrivateSquares.Business.Repositories.Interfaces;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using PrivateSquares.Api.Infrastructure.Core;
+using PrivateSquares.Business;
+using PrivateSquares.Business.DomainModels;
 using PrivateSquares.Data.EntityModels;
+using PrivateSquares.Data.Persistences;
+using PrivateSquares.Data.Repositories;
+using PrivateSquares.Services;
+using PrivateSquares.Services.Utilities;
 using System;
+using System.Net;
+using System.Net.Http;
+using static Microsoft.AspNetCore.WebSockets.Internal.Constants;
 
 namespace PrivateSquares.Api.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Produces("application/json")]
     [Route("api/Account")]
-    public class AccountController : Controller
+    public class AccountController : ApiControllerBase
     {
-        private readonly IUserRepository _userRepository;
-        public AccountController(IUserRepository userRepository)
+        private readonly IMembershipService _membershipService;
+        //private readonly IUserMap _userMap;
+        //UserMap objUserMap = new UserMap();
+        public AccountController(IMembershipService membershipService, 
+            IEntityRepository<Error> _errorRepository, IUnitOfWork _unitOfWork):base(_errorRepository, _unitOfWork)
         {
-            _userRepository = userRepository;
+            _membershipService = membershipService;
         }
 
-        [HttpGet]
-        public string Get()
-        {
-            return "1";
-        }
-
+        [AllowAnonymous]
         [HttpPost]
-        public int Register(User user)
+        public IActionResult Login([FromBody]LoginView user)
         {
-            user.UserID = Guid.NewGuid();
-            user.ApprovedBy = user.UserID;
-            user.CreatedOn = DateTime.Now;
-            user.EmailVerification = Guid.NewGuid();
-            user.IsActived = false;
-            user.IsDeleted = false;
-            user.ModifyOn = DateTime.Now;
-            user.RoleID = 0;
-            _userRepository.Add(user);
-            return 1;
+            if (ModelState.IsValid)
+            {
+                MembershipContext _userContext = _membershipService.ValidateUser(user.UserName, user.Password);
+                if (_userContext.User != null)
+                {
+                    Request.HttpContext.Response.Headers.Add("UserName", _userContext.Principal.Identity.Name);
+                    return new ContentResult { Content = "Successed!", StatusCode = (int)HttpStatusCode.OK, ContentType = "txt/html" };
+                }
+                else
+                    return new ContentResult { Content = "Failed", StatusCode = (int)HttpStatusCode.OK, ContentType = "txt/html" };
+            }
+            else
+                return new ContentResult { StatusCode = (int)HttpStatusCode.BadRequest };
+
+
+            //if (!_userRepository.IsEmailExist(ouserView.Email))
+            //    return Constaints.USER_EMAIL_NOT_EXIST;
+
+            //if (!_userRepository.ValidateUser(ouserView.Email, ouserView.Password))
+            //    return Unauthorized().ToString();
+
+            //HttpResponseMessage response = new HttpResponseMessage { new Headers };
+
+            //var token = new JwtTokenBuilder()
+            //                .AddSecurityKey(JwtSecurityKey.Create("fiver-secret-key"))
+            //                .AddSubject("james bond")
+            //                .AddIssuer("Fiver.Security.Bearer")
+            //                .AddAudience("Fiver.Security.Bearer")
+            //                .AddClaim("MembershipId", "111")
+            //                .AddExpiry(1)
+            //                .Build();
+            //response = Request.CreateResponse(HttpStatusCode.OK, "Authorized");
+            ////response.Headers.Add("Token", token.Value);
+            ////response.Headers.Add("Access-Control-Expose-Headers", "Token,TokenExpiry");
+            //Request.HttpContext.Response.Headers.Add("Token", token.Value);
+            //return new ContentResult { Content = "Success!", StatusCode = (int)HttpStatusCode.OK, ContentType = "txt/html" };
+        }
+
+        [AllowAnonymous]
+        [Route("register")]
+        [HttpPost]
+        public IActionResult Register([FromBody]UserView oUserView)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return new ContentResult { StatusCode = (int)HttpStatusCode.BadRequest };
+                else
+                {
+                    User _user = _membershipService.CreateUser(oUserView);
+                    if (_user != null)
+                        return new ContentResult { Content = Constaints.USER_ADDED_SUC, StatusCode = (int)HttpStatusCode.OK, ContentType = "text/plain" };
+                    else
+                        return new ContentResult { StatusCode = 404, ContentType = "text/plain" };
+                }
+            }
+            catch(Exception ex)
+            {
+                return new ContentResult { Content = ex.Message, ContentType = "text/plain" };
+            }
         }
     }
 }

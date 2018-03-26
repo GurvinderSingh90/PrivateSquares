@@ -19,6 +19,7 @@ namespace PrivateSquares.Api
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+            .UseUrls("http://localhost:56681")
                 .UseStartup<Startup>()
                 .Build();
     }
