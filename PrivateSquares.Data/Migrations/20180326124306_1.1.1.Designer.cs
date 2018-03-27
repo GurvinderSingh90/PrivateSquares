@@ -11,8 +11,8 @@ using System;
 namespace PrivateSquares.Data.Migrations
 {
     [DbContext(typeof(PrivateSquaresDbContext))]
-    [Migration("20180326054206_1.4")]
-    partial class _14
+    [Migration("20180326124306_1.1.1")]
+    partial class _111
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

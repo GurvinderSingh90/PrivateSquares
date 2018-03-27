@@ -10,5 +10,8 @@ namespace PrivateSquares.Data.EntityModels
         public string Message { get; set; }
         public string StackTrace { get; set; }
         public DateTime DateCreated { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public DateTime ModifiedOn { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

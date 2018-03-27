@@ -1,0 +1,52 @@
+﻿<li class="list-inline-item menu-li _regitered">
+    <a href="#" class="notifs">
+        <i class="fa fa-bell"></i>
+        <span class="info">5</span>
+    </a>
+    <ul class="list-unstyled notifications">
+        <li><a href="dashMessages.html">You have new mes...</a></li>
+        <li><a href="dashMessages.html">Logging was complet...</a></li>
+        <li><a href="dashMessages.html">You have new mes...</a></li>
+        <li><a href="dashMessages.html">You have new mes...</a></li>
+        <li><a href="dashMessages.html">Logging was complet...</a></li>
+    </ul>
+</li>
+<li class="list-inline-item menu-li _regitered">
+    <a href="dashMessages.html" class="notifs">
+        <i class="fa fa-envelope"></i>
+        <span class="danger">7</span>
+    </a>
+</li>
+<li class="list-inline-item menu-li _regitered">
+    <a href="profile"><img src="img/avatar2.jpg" alt=""> <span id="UserName"></span></a>
+</li>
+<li class="list-inline-item menu-li _regitered">
+    <a href="#" id="lnkLogout">Logout<i class="fa fa-lock"></i></a>
+</li>
+
+<li class="list-inline-item menu-li _regiter">
+    <a href="register">Sign Up<i class="fa fa-user-plus"></i></a>
+</li>
+<li class="list-inline-item menu-li _regiter">
+    <a href="login">Login<i class="fa fa-sign-in"></i> </a>
+</li>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        if (sessionStorage.getItem("accessToken") != null && sessionStorage.getItem("accessToken") != undefined) {
+            $("#UserName").text(localStorage.getItem("userName"));
+            $("._regitered").show();
+            $("._regiter").hide();
+        }
+        else {
+            $("._regitered").hide();
+            $("._regiter").show();
+        }
+        $("#lnkLogout").click(function () {
+            sessionStorage.removeItem("accessToken");
+            window.location.href = "/";
+        })
+
+    });
+</script>

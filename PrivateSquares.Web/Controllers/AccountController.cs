@@ -5,8 +5,9 @@ using PrivateSquares.Web.Services;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
-using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
+using System.Net;
+using System.Linq;
 
 namespace PrivateSquares.Web.Controllers
 {
@@ -69,18 +70,22 @@ namespace PrivateSquares.Web.Controllers
                     var response = client.PostAsJsonAsync("api/Account", user).Result;
                     using (HttpContent content = response.Content)
                     {
-                        Task<string> result = null;
+                        Task<string> result = content.ReadAsStringAsync();
+
                         if (response.IsSuccessStatusCode)
                         {
-                            result = content.ReadAsStringAsync();
-                            TempData["msg"] = result.Result;
+                            string token = response.Headers.GetValues("token").FirstOrDefault();
+                            if (!string.IsNullOrEmpty(token))
+                            {
+                                TempData["msg"] = result.Result;
+                                TempData["token-key"] = token;
+                                return RedirectToAction("index", "Home");
+                            }
+                            TempData["msg"] = "Failed!";
                             return RedirectToAction("login");
                         }
                         else
-                        {
-                            result = content.ReadAsStringAsync();
                             TempData["msg"] = result.Result;
-                        }
                     }
                 }
                 return View(user);

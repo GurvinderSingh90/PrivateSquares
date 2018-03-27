@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using PrivateSquares.Api.Infrastructure.Core;
 using PrivateSquares.Business;
@@ -31,44 +32,33 @@ namespace PrivateSquares.Api.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult Login([FromBody]LoginView user)
+        public IActionResult Login(LoginView user)
         {
-            if (ModelState.IsValid)
-            {
-                MembershipContext _userContext = _membershipService.ValidateUser(user.UserName, user.Password);
-                if (_userContext.User != null)
-                {
-                    Request.HttpContext.Response.Headers.Add("UserName", _userContext.Principal.Identity.Name);
-                    return new ContentResult { Content = "Successed!", StatusCode = (int)HttpStatusCode.OK, ContentType = "txt/html" };
-                }
-                else
-                    return new ContentResult { Content = "Failed", StatusCode = (int)HttpStatusCode.OK, ContentType = "txt/html" };
-            }
-            else
-                return new ContentResult { StatusCode = (int)HttpStatusCode.BadRequest };
+            //if (ModelState.IsValid)
+            //{
+            //    MembershipContext _userContext = _membershipService.ValidateUser(user.UserName, user.Password);
+            //    if (_userContext.User != null)
+            //    {
+            //        Request.HttpContext.Response.Headers.Add("UserName", _userContext.Principal.Identity.Name);
+            //        return new ContentResult { Content = "Successed!", StatusCode = (int)HttpStatusCode.OK, ContentType = "txt/html" };
+            //    }
+            //    else
+            //        return new ContentResult { Content = "Failed", StatusCode = (int)HttpStatusCode.OK, ContentType = "txt/html" };
+            //}
+            //else
+            //    return new ContentResult { StatusCode = (int)HttpStatusCode.BadRequest };
 
 
-            //if (!_userRepository.IsEmailExist(ouserView.Email))
-            //    return Constaints.USER_EMAIL_NOT_EXIST;
+            var token = new JwtTokenBuilder()
+                            .AddSecurityKey(JwtSecurityKey.Create("fiver-secret-key"))
+                            .AddSubject("james bond")
+                            .AddIssuer("Fiver.Security.Bearer")
+                            .AddAudience("Fiver.Security.Bearer")
+                            .AddClaim("MembershipId", "111")
+                            .AddExpiry(1)
+                            .Build();
 
-            //if (!_userRepository.ValidateUser(ouserView.Email, ouserView.Password))
-            //    return Unauthorized().ToString();
-
-            //HttpResponseMessage response = new HttpResponseMessage { new Headers };
-
-            //var token = new JwtTokenBuilder()
-            //                .AddSecurityKey(JwtSecurityKey.Create("fiver-secret-key"))
-            //                .AddSubject("james bond")
-            //                .AddIssuer("Fiver.Security.Bearer")
-            //                .AddAudience("Fiver.Security.Bearer")
-            //                .AddClaim("MembershipId", "111")
-            //                .AddExpiry(1)
-            //                .Build();
-            //response = Request.CreateResponse(HttpStatusCode.OK, "Authorized");
-            ////response.Headers.Add("Token", token.Value);
-            ////response.Headers.Add("Access-Control-Expose-Headers", "Token,TokenExpiry");
-            //Request.HttpContext.Response.Headers.Add("Token", token.Value);
-            //return new ContentResult { Content = "Success!", StatusCode = (int)HttpStatusCode.OK, ContentType = "txt/html" };
+            return new JsonResult(token);
         }
 
         [AllowAnonymous]

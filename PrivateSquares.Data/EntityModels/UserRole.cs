@@ -10,5 +10,8 @@ namespace PrivateSquares.Data.EntityModels
         public int UserId { get; set; }
         public int RoleId { get; set; }
         public virtual Role Role { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public DateTime ModifiedOn { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace PrivateSquares.Data.Migrations
 {
-    public partial class initialmigration : Migration
+    public partial class _111 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -31,23 +31,38 @@ namespace PrivateSquares.Data.Migrations
                     ApprovedBy = table.Column<Guid>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     Email = table.Column<string>(maxLength: 100, nullable: false),
-                    EmailVerification = table.Column<Guid>(nullable: false),
                     FirtsName = table.Column<string>(maxLength: 50, nullable: true),
                     IsActived = table.Column<bool>(nullable: false),
                     IsDeleted = table.Column<bool>(nullable: false),
                     LastName = table.Column<string>(maxLength: 50, nullable: true),
                     Mobile = table.Column<string>(maxLength: 10, nullable: true),
                     ModifyOn = table.Column<DateTime>(nullable: false),
-                    Password = table.Column<string>(maxLength: 30, nullable: false),
+                    Password = table.Column<string>(maxLength: 200, nullable: false),
                     Photo = table.Column<string>(maxLength: 200, nullable: true),
                     RoleID = table.Column<int>(nullable: false),
-                    Salt = table.Column<string>(nullable: true),
+                    Salt = table.Column<string>(maxLength: 200, nullable: false),
                     Title = table.Column<string>(maxLength: 500, nullable: true),
-                    UserID = table.Column<Guid>(nullable: false)
+                    UserID = table.Column<Guid>(nullable: false),
+                    VerifiedEmail = table.Column<bool>(nullable: false),
+                    VerifiedPhone = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Verifies",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Code = table.Column<int>(nullable: false),
+                    Type = table.Column<string>(maxLength: 200, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Verifies", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -97,6 +112,9 @@ namespace PrivateSquares.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "UserRoles");
+
+            migrationBuilder.DropTable(
+                name: "Verifies");
 
             migrationBuilder.DropTable(
                 name: "Roles");

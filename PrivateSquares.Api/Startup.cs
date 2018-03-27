@@ -73,6 +73,7 @@ namespace PrivateSquares.Api
             services.AddScoped<IDataRepositoryFactory, DataRepositoryFactory>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserMap, UserMap>();
+            services.AddCors();
             services.AddMvc();
             services.AddAutoMapper();
         }
@@ -84,8 +85,9 @@ namespace PrivateSquares.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-            
             app.UseAuthentication();
+            app.UseCors(builder => builder.WithOrigins("http://localhost:49365").AllowAnyMethod()
+            );
             app.UseMvc();
         }
     }

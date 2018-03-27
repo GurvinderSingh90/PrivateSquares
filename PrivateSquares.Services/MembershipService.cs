@@ -71,9 +71,9 @@ namespace PrivateSquares.Services
                 ApprovedBy = Id,
                 VerifiedEmail = false,
                 VerifiedPhone = false,
-                IsActived = false,
+                IsActive = false,
                 IsDeleted = false,
-                ModifyOn = DateTime.Now,
+                ModifiedOn = DateTime.Now,
                 CreatedOn = DateTime.Now
             };
 

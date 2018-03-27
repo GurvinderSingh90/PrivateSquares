@@ -1,12 +1,14 @@
 E:\Projects\PrivateSquares\PrivateSquares.Services\bin\Debug\netcoreapp2.0\PrivateSquares.Services.deps.json
 E:\Projects\PrivateSquares\PrivateSquares.Services\bin\Debug\netcoreapp2.0\PrivateSquares.Services.dll
 E:\Projects\PrivateSquares\PrivateSquares.Services\bin\Debug\netcoreapp2.0\PrivateSquares.Services.pdb
+E:\Projects\PrivateSquares\PrivateSquares.Services\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Http.Abstractions.dll
 E:\Projects\PrivateSquares\PrivateSquares.Services\bin\Debug\netcoreapp2.0\Microsoft.IdentityModel.Tokens.dll
 E:\Projects\PrivateSquares\PrivateSquares.Services\bin\Debug\netcoreapp2.0\PrivateSquares.Business.dll
 E:\Projects\PrivateSquares\PrivateSquares.Services\bin\Debug\netcoreapp2.0\PrivateSquares.Data.dll
 E:\Projects\PrivateSquares\PrivateSquares.Services\bin\Debug\netcoreapp2.0\System.IdentityModel.Tokens.Jwt.dll
 E:\Projects\PrivateSquares\PrivateSquares.Services\bin\Debug\netcoreapp2.0\PrivateSquares.Business.pdb
 E:\Projects\PrivateSquares\PrivateSquares.Services\bin\Debug\netcoreapp2.0\PrivateSquares.Data.pdb
+E:\Projects\PrivateSquares\PrivateSquares.Services\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Http.Abstractions.xml
 E:\Projects\PrivateSquares\PrivateSquares.Services\bin\Debug\netcoreapp2.0\Microsoft.IdentityModel.Tokens.xml
 E:\Projects\PrivateSquares\PrivateSquares.Services\bin\Debug\netcoreapp2.0\System.IdentityModel.Tokens.Jwt.xml
 E:\Projects\PrivateSquares\PrivateSquares.Services\obj\Debug\netcoreapp2.0\PrivateSquares.Services.csprojResolveAssemblyReference.cache

@@ -16,7 +16,7 @@ namespace PrivateSquares.Business
             oUserView.ApprovedBy = oUserView.UserID;
             oUserView.CreatedOn = DateTime.Now;
             //oUserView.EmailVerification = Guid.NewGuid();
-            oUserView.IsActived = false;
+            oUserView.IsActive = false;
             oUserView.IsDeleted = false;
             oUserView.ModifyOn = DateTime.Now;
             oUserView.RoleID = 0;

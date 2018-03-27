@@ -1,54 +1,78 @@
 ﻿@model PrivateSquares.Web.Models.Login
-
 @{
     ViewData["Title"] = "login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
 
-    <div class="box">
-        <div class="box-header">
-            <center>
-                Login
-            </center>
-        </div>
-        <div class="box-body">
-            <div class="row">
-                <div class="col-lg-4">&nbsp;</div>
-                <div class="col-lg-4">
 
-                    <div class="form-group">
-                        <label for="UserName">UserName:</label>
-                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "", @placeholder = "Email ID" } })
-                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="form-group">
-                        <label for="Password">Password:</label>
-                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "", @placeholder = "Password" } })
-                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="from-group">
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="remember-me">
-                        <div>
-                            <input type="checkbox" id="test1" />
-                            <label for="test1">Remember Me</label>
-                        </div>
-                        @*<a href="#">Forgot Password?</a>*@
-                    </div>
-                    <div class="sub-btn">
-                        <input type="submit" class="btn ui-btn info" value="SIGN IN">
-                    </div>
+<div class="box">
+    <div class="box-header">
+        <center>
+            Login
+        </center>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-lg-4">&nbsp;</div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label for="UserName">UserName:</label>
+                    <input type="text" id="UserName" placeholder="Email ID" />
+                    @*@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "", @placeholder = "Email ID" } })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })*@
                 </div>
-                <div class="col-lg-4">&nbsp;</div>
+                <div class="form-group">
+                    <label for="Password">Password:</label>
+                    <input type="password" id="Password" placeholder="Password" />
+                    @*@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "", @placeholder = "Password" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })*@
+                </div>
+                <div class="from-group">
+                    @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                </div>
+                <div class="remember-me">
+                    <div>
+                        <input type="checkbox" id="test1" />
+                        <label for="test1">Remember Me</label>
+                    </div>
+                    @*<a href="#">Forgot Password?</a>*@
+                </div>
+                <div class="sub-btn">
+                    <input type="button" id="btnLogin" class="btn ui-btn info" value="SIGN IN">
+                </div>
+            </div>
+            <div class="col-lg-4">
+
+
+            </div>
+            <div id="divError" class="alert alert-danger collapse">
+                <a id="linkClose" href="#" class="Close">&times;</a>
+                <div id="divErrorText"></div>
             </div>
         </div>
-
     </div>
-    @Html.Raw(TempData["msg"])
+
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#btnLogin").click(function () {
+                $('linkClose').click(function () {
+                    $('#divError').hide('fade');
+                });
+                var user = {};
+                user.UserName = $('#UserName').val();
+                user.Password = $('#Password').val();
+                $.post("http://localhost:56681/api/Account", user, function (response) { 
+                    sessionStorage.setItem('accessToken', response.token_access);
+                    localStorage.setItem('userName', response.user_name);
+                    window.location.href = "/";
+                 });                    
+            });
+        });
+    </script>
 }

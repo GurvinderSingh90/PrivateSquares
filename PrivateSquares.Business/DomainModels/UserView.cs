@@ -24,7 +24,7 @@ namespace PrivateSquares.Business.DomainModels
         public bool VerifiedPhone { get; set; }
         public bool VerifiedEmail { get; set; }
         public Guid ApprovedBy { get; set; }
-        public bool IsActived { get; set; }
+        public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime CreatedOn { get; set; }
         public DateTime ModifyOn { get; set; }

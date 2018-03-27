@@ -15,6 +15,7 @@ namespace PrivateSquares.Services
         }
 
         public DateTime ValidTo => token.ValidTo;
-        public string Value => new JwtSecurityTokenHandler().WriteToken(this.token);
+        public string token_access => new JwtSecurityTokenHandler().WriteToken(this.token);
+        public string user_name => token.Subject;
     }
 }
